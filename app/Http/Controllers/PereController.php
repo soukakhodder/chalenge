@@ -11,6 +11,11 @@ class PereController extends Controller
     {
         return Pere::all();
     }
+    public function show($id)
+    {
+        $Pere=Pere::findOrFail($id);
+        return $Pere;
+    }
     public function store(Request $request)
     {
         try {

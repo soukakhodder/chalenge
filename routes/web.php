@@ -19,22 +19,30 @@ $router->get('/', function () use ($router) {
 $router->group(['prefix'=>'api'], function () use ($router) {
     //eleves routes
     $router->get('/eleves','EleveController@index');
+    $router->get('/eleves/{id}','EleveController@show');
     $router->post('/eleves','EleveController@store');
     $router->put('/eleves/{id}','EleveController@update');
     $router->delete('/eleves/{id}','EleveController@delete');
-//peres routes
+    //peres routes
     $router->get('/peres','PereController@index');
+    $router->get('/peres/{id}','PereController@show');
     $router->post('/peres','PereController@store');
     $router->put('/peres/{id}','PereController@update');
     $router->delete('/peres/{id}','PereController@delete');
-//entree routes 
+    //entree routes 
     $router->get('/entree','DateEntreController@index');
     $router->get('/entree/{id}','DateEntreController@show');
     $router->post('/entree','DateEntreController@store');
     $router->put('/entree/{id}','DateEntreController@update');
     $router->delete('/entree/{id}','DateEntreController@delete');
+    //sorties routes 
+    $router->get('/sorties','DateSortieController@index');
+    $router->get('/sorties/{id}','DateSortieController@show');
+    $router->post('/sorties','DateSortieController@store');
+    $router->put('/sorties/{id}','DateSortieController@update');
+    $router->delete('/sorties/{id}','DateSortieController@delete');
     //authentication routes
-         $router->post('/login','AuthController@login');
+    $router->post('/login','AuthController@login');
     $router->post('/register','AuthController@register');
     $router->post('/logout','AuthController@logout');
  

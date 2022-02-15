@@ -16,8 +16,8 @@ class DateEntreController extends Controller
     public function show($id)
     {
         $id_p=Pere::findOrFail($id);
-        $resultat=DB::select('select parent_id,p.name,p.prenom,d."date_E" from peres P,date_entres d where p.id=d.parent_id and parent_id=?',$id_p);
-        return $resultat;
+        $resultat=DB::select('select p.name,p.prenom,d."date_E" from peres P,date_entres d where p.id=d.parent_id and parent_id=?',[$id]);
+        return ($resultat);
     }
     public function store(Request $request,$id)
     {

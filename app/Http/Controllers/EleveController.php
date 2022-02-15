@@ -11,6 +11,11 @@ class EleveController extends Controller
     {
         return Eleve::all();
     }
+    public function show($id)
+    {
+        $eleve=Eleve::findOrFail($id);
+        return $eleve;
+    }
     public function store(Request $request)
     {
         try {
@@ -31,7 +36,7 @@ class EleveController extends Controller
     }
     public function update(Request $request,$id)
     {
-        try {
+        try { 
             $eleve=Eleve::findOrFail($id);
             $eleve->name=$request->name;
             $eleve->prenom=$request->prenom;
