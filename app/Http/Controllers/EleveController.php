@@ -24,8 +24,13 @@ class EleveController extends Controller
             $eleve->prenom=$request->prenom;
             $eleve->date_nais=$request->date_nais;
             $eleve->code_massar=$request->code_massar;
-            $eleve->img=$request->img;
             $eleve->niveau=$request->niveau;
+            $request->validate([
+                'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+            $imageName = time().'.'.$request->img->extension();  
+            $request->img->move(public_path('images'), $imageName);
+            $eleve->img=$request->img;
             if($eleve->save()){
                  return response()->json(['status'=>'success','message'=>'eleve created successfully']);
             }
