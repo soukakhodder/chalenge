@@ -5,7 +5,7 @@ use App\Models\DateEntre;
 use App\Models\Pere;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-
+Use \Carbon\Carbon;
 class DateEntreController extends Controller
 {
     public function index()
@@ -24,7 +24,7 @@ class DateEntreController extends Controller
         try {
             $date=new DateEntre();
             $date->parent_id=$id;
-            $date->date_E=$request->date_E;
+            $date->date_E=Carbon::now();;
             if($date->save()){
                  return response()->json(['status'=>'success','message'=>'successfully']);
             }

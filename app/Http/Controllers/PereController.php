@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pere;
+use App\Models\Eleve;
 use Illuminate\Support\Facades\DB;
 class PereController extends Controller
 {
@@ -32,6 +33,14 @@ class PereController extends Controller
         catch(exception $e){
           return response()->json(['status'=>'error','message'=>$e->getMessage()]);
         }
+    }
+    public function getElevePere($id)
+    {
+        $resultat=DB::select('select E.name as nomeleve ,E.prenom as prenomeleve ,E.img as imgeleve, P.name,P.prenom,P.img
+        from eleves E,peres P,eleve_parents EP
+        where EP.eleve_id=E.id and EP.parent_id=P.id
+        and P.id=?',[$id]);
+        return ($resultat);
     }
     public function update(Request $request,$id)
     {

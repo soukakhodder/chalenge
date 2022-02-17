@@ -29,6 +29,7 @@ $router->group(['prefix'=>'api'], function () use ($router) {
     $router->post('/peres','PereController@store');
     $router->put('/peres/{id}','PereController@update');
     $router->delete('/peres/{id}','PereController@delete');
+    $router->get('/peresE/{id}','PereController@getElevePere');
     //entree routes 
     $router->get('/entree','DateEntreController@index');
     $router->get('/entree/{id}','DateEntreController@show');
