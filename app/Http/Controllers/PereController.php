@@ -16,7 +16,8 @@ class PereController extends Controller
     {
         $Pere=Pere::findOrFail($id);
         return $Pere;
-    }
+    }  
+    
     public function store(Request $request)
     {
         try {
@@ -41,6 +42,7 @@ class PereController extends Controller
         where EP.eleve_id=E.id and EP.parent_id=P.id
         and P.id=?',[$id]);
         return ($resultat);
+       
     }
     public function update(Request $request,$id)
     {

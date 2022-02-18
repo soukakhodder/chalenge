@@ -18,7 +18,6 @@ class EleveController extends Controller
     }
     public function store(Request $request)
     {
-        return $request;
         try {
             $eleve=new Eleve();
             $eleve->name=$request->name;
